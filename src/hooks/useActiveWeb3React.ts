@@ -10,10 +10,24 @@ import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
  * Recreate web3 instance only if the provider change
  */
 const useActiveWeb3React = (): Web3ReactContextInterface<Web3Provider> => {
+  /**
+   * web3React: {
+   *  account: string,
+   *  activate: function,
+   *  active: boolean,
+   *  deactivate: function,
+   *  error,
+   *  setError
+   * }
+   */
   const { library, chainId, ...web3React } = useWeb3React()
   const refEth = useRef(library)
   const [provider, setprovider] = useState(library || simpleRpcProvider)
 
+  // eslint-disable-next-line no-console
+  // console.log("useActiveWeb3React", library, chainId, web3React)
+
+  // TODO - Why do you need this?
   useEffect(() => {
     if (library !== refEth.current) {
       setprovider(library || simpleRpcProvider)

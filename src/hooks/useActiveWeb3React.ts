@@ -11,6 +11,8 @@ import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
  */
 const useActiveWeb3React = (): Web3ReactContextInterface<Web3Provider> => {
   /**
+   * library: provider
+   * chainId: 
    * web3React: {
    *  account: string,
    *  activate: function,
